@@ -1,13 +1,12 @@
 package com.example.config;
 
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.hbase.*;
-import org.apache.hadoop.hbase.client.*;
-import org.apache.hadoop.hbase.filter.*;
-import org.apache.hadoop.hbase.util.Bytes;
-import org.springframework.context.annotation.Bean;
-
 import java.io.IOException;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.client.Admin;
+import org.apache.hadoop.hbase.client.Connection;
+import org.apache.hadoop.hbase.client.ConnectionFactory;
+import org.springframework.context.annotation.Bean;
 
 
 /**

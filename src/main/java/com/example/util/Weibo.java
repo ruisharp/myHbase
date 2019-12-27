@@ -1,4 +1,4 @@
-package weibo;
+package com.example.util;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.*;
