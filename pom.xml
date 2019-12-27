@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>spring-boot-hbase-example</groupId>
-    <artifactId>spring-boot-hbase-example</artifactId>
+    <artifactId>myhbase</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-        <name>hbase</name>
+        <name>myhbase</name>
         <description>Demo project for Spring Boot</description>
 
         <parent>
