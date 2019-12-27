@@ -18,7 +18,7 @@ public class Hbase {
     @Bean
     public Connection getHbaseConnect() throws IOException {
         Configuration conf = HBaseConfiguration.create();
-        conf.set("hbase.zookeeper.quorum", "myhbase");
+        conf.set("hbase.zookeeper.quorum", "192.168.0.204");
         conf.set("hbase.zookeeper.property.clientPort", "2181");
         conf.set("log4j.logger.org.apache.hadoop.hbase", "WARN");
         Connection connection = ConnectionFactory.createConnection(conf);

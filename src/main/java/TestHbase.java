@@ -9,8 +9,8 @@ public class TestHbase {
     static Configuration conf=null;
     static {
         conf= HBaseConfiguration.create();
-        conf.set("hbase.zookeeper.quorum","myhbase");
-        conf.set("hbase.zookeeper.property.clientPort","2181");
+        conf.set("hbase.zookeeper.quorum","192.168.0.204");
+        //conf.set("hbase.zookeeper.property.clientPort","2181");
         conf.set("log4j.logger.org.apache.hadoop.hbase","WARN");
     }
 
@@ -69,12 +69,15 @@ public class TestHbase {
             HColumnDescriptor[] columnFamilies=table.getTableDescriptor().getColumnFamilies();
             for(int i=0;i<columnFamilies.length;i++){
                 String familyName=columnFamilies[i].getNameAsString();
-                if(familyName.equals("version")){
+          /*      if(familyName.equals("version")){
                     for(int j=0;j<column.length;j++){
                         put.addColumn(Bytes.toBytes(familyName),Bytes.toBytes(column[j]),Bytes.toBytes(value[j]));
                     }
                     table.put(put);
                     System.out.println("Add Data Success!");
+                }*/
+                for(int j=0;j<column.length;j++){
+                    put.addColumn(Bytes.toBytes(familyName),Bytes.toBytes(column[j]),Bytes.toBytes(value[j]));
                 }
             }
         }catch(IOException e){
@@ -131,8 +134,10 @@ public class TestHbase {
     }
 
     public static void main(String[] args) throws Exception {
-        System.setProperty("hadoop.home.dir", "/Users/YourName/Desktop");
-       TestHbase.createTable("box_device","model","mac","chip","emmcId","barcode","tcVersion","systemVersion");
+        //System.setProperty("hadoop.home.dir", "/Users/YourName/Desktop");
+       //TestHbase.createTable("rui_test","info","address","skill");
+      // TestHbase.addData("test1","rui_test",new String[]{"info","address","skill"} , new String[]{"dd","ddd","adas"} );
+        TestHbase.getResultByVersion("rui_test" , "test1","info","info");
         //TestHbase.deleteTable("ota_pre_record");
       //TestHbase.updateTable("ota_pre_record","324b1f27c982ea87XyZf+1502176018+20900","version","check_time","2017-11-08 10:46:34");
       //TestHbase.updateTable("ota_pre_record","324b1f27c982ea87XyZf+1502176018+20900","version","download_time","2017-11-08 14:37:34");

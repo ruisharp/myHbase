@@ -20,26 +20,17 @@ public class HelloController {
     @Autowired
     Hbase hbase;
 
-    static final String TABLE_NAME = "box_device";
+    static final String TABLE_NAME = "rui_test";
 
 
     @RequestMapping("/saveDeviceInfoToHbase")
-    public Object saveDeviceInfoToHbase(@RequestParam(required = true) String model,
-                                        @RequestParam(required = true) String chip,
-                                        @RequestParam(required = true) String mac,
-                                        @RequestParam(required = true) String emmcId,
-                                        @RequestParam(required = true) String barcode,
-                                        @RequestParam(required = true) String tcVersion,
-                                        @RequestParam(required = true) String systemVersion
+    public Object saveDeviceInfoToHbase(@RequestParam(required = true) String info,
+                                        @RequestParam(required = true) String address,
+                                        @RequestParam(required = true) String skill
     ) throws Exception {
-        String rowKey = DigestUtils.md5Hex(model + chip + mac + barcode + emmcId);
-        this.updateTable(rowKey, "model", "model", model);
-        this.updateTable(rowKey, "chip", "chip", chip);
-        this.updateTable(rowKey, "mac", "mac", mac);
-        this.updateTable(rowKey, "emmcId", "emmcId", emmcId);
-        this.updateTable(rowKey, "barcode", "barcode", barcode);
-        this.updateTable(rowKey, "tcVersion", "mac", tcVersion);
-        this.updateTable(rowKey, "systemVersion", "systemVersion", systemVersion);
+        String rowKey = DigestUtils.md5Hex(info + address + skill);
+        this.updateTable(rowKey, "address", "address:provice", address);
+        this.updateTable(rowKey, "skill", "chip", skill);
         HashMap<Object, Object> data = new HashMap<>();
         data.put("serviceId", rowKey);
         return data;
